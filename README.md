@@ -3,7 +3,7 @@ This project has a frontend and a backend.
 
 Backend project is created with Spring
 
-Clone the repository locally using this link
+Clone the repository locally using this link: https://github.com/joseway04/gildedrose.git
 
 ## Frontend 
 The frontedn app is created with Angular.So Angular, Typescript an NodeJS are required
