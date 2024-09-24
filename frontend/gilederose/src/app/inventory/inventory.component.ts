@@ -14,10 +14,11 @@ export class InventoryComponent implements OnInit{
   file!: File;
   jsonFileForm!: FormGroup;
   errrorMessage!: string;
-  ineventory!: Item[];
+  inventory!: Item[];
 
   ngOnInit(): void {
-      this.initJsonFile();
+    this.findAll();
+    this.initJsonFile();
   }
   initJsonFile(){
     this.jsonFileForm = this.fb.group({
@@ -28,16 +29,29 @@ export class InventoryComponent implements OnInit{
     this.file = event.target.files[0];
   }
   upload(){
+    this.inventory = [];
     console.log('File to send: ', this.file);
     const data = new FormData();
     data.append('file', this.file);
 
     this.inventoryService.upload(data).subscribe({
       next: res => {
-        this.ineventory = res;
+        this.inventory = res;
       },
       error: err => {
-        this.errrorMessage = err.message;
+        this.errrorMessage = err.error.message;
+        console.log('Error occured: ', err);
+        
+      }
+    });
+  }
+  findAll(){
+    this.inventoryService.findAll().subscribe({
+      next: res => {
+        this.inventory = res;
+      },
+      error: err => {
+        this.errrorMessage = "Something went wrong while fetching inventory";
       }
     });
   }

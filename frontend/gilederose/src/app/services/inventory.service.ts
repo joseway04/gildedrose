@@ -15,4 +15,7 @@ export class InventoryService {
   upload(data: FormData): Observable<Item[]>{
     return this.http.post<Item[]>(`${this.inventoryUrl}`, data);
   }
+  findAll(): Observable<Item[]>{
+    return this.http.get<Item[]>(`${this.inventoryUrl}`);
+  }
 }

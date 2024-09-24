@@ -2,7 +2,6 @@ package com.gildedrose.inventory.helpers;
 
 import com.gildedrose.inventory.models.Item;
 
-//@Component
 public class ItemUpdater {
 	private Item item;
 	
